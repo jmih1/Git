@@ -14,7 +14,7 @@ monthlyPaymentRate=0.04
 
     
 
-def Balance(balance, annualInterestRate, monthlyPaymentRate):
+def bal(balance, annualInterestRate, monthlyPaymentRate):
     for i in range(12):
             paidBalance = monthlyPaymentRate * balance
             balance = balance - paidBalance
@@ -28,4 +28,4 @@ def Balance(balance, annualInterestRate, monthlyPaymentRate):
     
     
 
-print('Remaining Balance: ' + str(Balance(balance, annualInterestRate, monthlyPaymentRate)))
+print('Remaining Balance: ' + str(bal(balance, annualInterestRate, monthlyPaymentRate)))
