@@ -6,21 +6,31 @@ Created on Thu Jun  7 08:21:08 2018
 """
 
 def fixed(balance, annualInterestRate):
-    fix=0.01
-    origbalance = balance
-    while origbalance >= 0:
+    '''
+    balance : balance to be paid
+    annualInterestRate : pre-determined rate
+    
+    return : fixed payment
+    
+    '''
+    fix=10
+    origbalance = balance #set balance to original balance to be altered
+    while origbalance >= 0: #until balance is paid off
         origbalance = balance
         for i in range(12):
-            origbalance = origbalance - fix
+            origbalance = origbalance - fix #perform deduction
+            #add monthly interest to balance 
             origbalance = origbalance + (annualInterestRate/12) * origbalance
-        fix += .01
-    return fix-.01
+        fix += 10
+    return fix-10
 
 print('Lowest Payment: ' + str(fixed(3329, 0.2)))
         
 
 
 '''
+Ignore the following code 
+
 def checkPay(balance, annualInterestRate, fixedPay):
     for i in range(12):
         balance = balance - fixedPay

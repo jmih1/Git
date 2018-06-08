@@ -13,16 +13,16 @@ def gcdIter(a, b):
     '''
     ans=0
     if a > b :
-        test=b
-        while test>=1:
-            if b%test==0 and a%test==0:
+        test=b #if b is smaller, set it to test since gcd won't be greater
+        while test>=1: #ensure gcd is positive and not zero
+            if b%test==0 and a%test==0: #f test divides both, set it to ans
                 ans=test
                 break
             else:
-                ans=test
+                ans=test #else set test to ans and decrease
                 test -=1
     else:
-        test=a
+        test=a #set smaller number to gcd
         while test>=1:
             if b%test==0 and a%test==0:
                 ans=test

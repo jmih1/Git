@@ -15,6 +15,14 @@ monthlyPaymentRate=0.04
     
 
 def bal(balance, annualInterestRate, monthlyPaymentRate):
+    '''
+    balance: the initial balance
+    annualInterestRate: pre-determined rate
+    monthlyPaymentRate : percentage of balance paid monthly
+    
+    return: balance left round to two places
+    
+    '''
     for i in range(12):
             paidBalance = monthlyPaymentRate * balance
             balance = balance - paidBalance
