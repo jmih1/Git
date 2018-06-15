@@ -109,39 +109,45 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    print("****************************************")
-    secretWord = chooseWord(wordlist)
-    wordLength = len(chooseWord(wordlist))
+    print("************************************************************")
+    wordLength = len(secretWord)
     guesses = 8
-    lettersGuessed = []
-    availableLetters = getAvailableLetters(lettersGuessed)
-    gameComplete = isWordGuessed(secretWord, lettersGuessed)
+    lettersGuessed = [] 
+    getAvailableLetters(lettersGuessed)
+    mistakesMade = 0
+   
     
-    print("Hey there, Let's Win This. Don't hang me")
+    print("Welcome to the hangman Game. Please Don't hang me!")
     print("I am a " + str(wordLength) + "-letter Word")
     print("*****************************************")
+    print(secretWord)
     while guesses > 0:
+        print("Status of guessed word: " + getGuessedWord(secretWord, lettersGuessed))
         print("You have " + str(guesses) + " guesses left")
-        print("The available words to choose from are " + availableLetters)
+        print("The available words to choose from are " + getAvailableLetters(lettersGuessed))
         guess = input("Select from available letters: ")
-        while guess.lower() not in availableLetters:
+        while guess.lower() not in getAvailableLetters(lettersGuessed):
             print("Your selection was not in the available letters")
-            guess
-        lettersGuessed.append(guess)
+            guess = input("Select from available letters: ")
+        lettersGuessed.append(guess.lower())
         if guess.lower() in secretWord:
             print("Good Guess: " + getGuessedWord(secretWord, lettersGuessed))
-            availableLetters
+            getAvailableLetters(lettersGuessed)
             if isWordGuessed(secretWord, lettersGuessed):
                 print("You won")
+                break
         else:
-            guess -=1
+            print("Wrong guess: " +  getGuessedWord(secretWord, lettersGuessed))
+            guesses -= 1
+            mistakesMade += 1
             print("Sorry, that letter is not in the secret word")
-            availableLetters
+            getAvailableLetters(lettersGuessed)
             print("*****************************************")
       
-    if gameComplete:
+    if not (isWordGuessed(secretWord, lettersGuessed)):
+        print("I got hanged")
         print("Better Luck Next Time")
-    return "End Game"
+    return None
     
     
 
