@@ -3,8 +3,10 @@
 Created on Tue May 29 02:11:41 2018
 
 @author: brown
+
+@Description: This program approximates the cube root of an integer(number)
 """
-cube = 8
+cube = int(input("Enter the number whose cube root you want to compute: "))
 epsilon = 0.01
 numGuesses = 0
 low = 0.0
